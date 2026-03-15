@@ -146,5 +146,5 @@ Weights and maxes are constants in `src/services/productivityService.js` — eas
 ---
 
 <div align="center">
-  Made with ❤️ and ☕ by Ralph Rosael · Built with Leaflet + Mapbox + Chart.js
+  Made with ❤️ and ☕ by Ralph Rosael · Built with React + Vite + GitHub API + WakaTime + Chart.js
 </div>
