@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0b0e"/>
+      <stop offset="100%" style="stop-color:#111827"/>
+    </linearGradient>
+    <linearGradient id="card1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f2430"/>
+      <stop offset="100%" style="stop-color:#181c23"/>
+    </linearGradient>
+    <linearGradient id="bargrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Blue glow accent top-left -->
+  <circle cx="120" cy="120" r="180" fill="rgba(59,130,246,0.06)"/>
+  <!-- Green glow accent bottom-right -->
+  <circle cx="1100" cy="520" r="200" fill="rgba(16,185,129,0.05)"/>
+
+  <!-- Logo dot -->
+  <rect x="80" y="180" width="14" height="14" rx="4" fill="#3b82f6" filter="url(#glow)"/>
+  <text x="104" y="193" font-family="'JetBrains Mono', monospace" font-size="16"
+        font-weight="500" fill="rgba(255,255,255,0.5)" letter-spacing="2">dev daily</text>
+
+  <!-- Main title -->
+  <text x="80" y="290" font-family="'Inter', system-ui, sans-serif" font-size="64"
+        font-weight="700" fill="#ffffff" letter-spacing="-2">DevDaily</text>
+  <text x="80" y="360" font-family="'Inter', system-ui, sans-serif" font-size="64"
+        font-weight="700" fill="#ffffff" letter-spacing="-2">Dashboard</text>
+
+  <!-- Blue accent underline -->
+  <rect x="80" y="376" width="160" height="4" rx="2" fill="url(#bargrad)"/>
+
+  <!-- Subtitle -->
+  <text x="80" y="430" font-family="'Inter', system-ui, sans-serif" font-size="22"
+        font-weight="400" fill="rgba(255,255,255,0.45)">Track your coding activity,</text>
+  <text x="80" y="460" font-family="'Inter', system-ui, sans-serif" font-size="22"
+        font-weight="400" fill="rgba(255,255,255,0.45)">commits &amp; productivity.</text>
+
+  <!-- Tags -->
+  <rect x="80" y="500" width="90" height="26" rx="6" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.4)" stroke-width="1"/>
+  <text x="125" y="517" font-family="'JetBrains Mono', monospace" font-size="11"
+        fill="#3b82f6" text-anchor="middle">GitHub</text>
+
+  <rect x="182" y="500" width="98" height="26" rx="6" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.35)" stroke-width="1"/>
+  <text x="231" y="517" font-family="'JetBrains Mono', monospace" font-size="11"
+        fill="#10b981" text-anchor="middle">WakaTime</text>
+
+  <rect x="292" y="500" width="86" height="26" rx="6" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+  <text x="335" y="517" font-family="'JetBrains Mono', monospace" font-size="11"
+        fill="#f59e0b" text-anchor="middle">Pomodoro</text>
+
+  <!-- Widget 1: GitHub Activity -->
+  <rect x="620" y="60" width="280" height="150" rx="12" fill="url(#card1)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="644" y="90" font-family="'JetBrains Mono', monospace" font-size="10"
+        fill="rgba(255,255,255,0.35)" letter-spacing="1">GITHUB ACTIVITY</text>
+  <g fill="rgba(255,255,255,0.08)">
+    <rect x="644" y="105" width="8" height="8" rx="2"/>
+    <rect x="655" y="105" width="8" height="8" rx="2"/>
+    <rect x="666" y="105" width="8" height="8" rx="2"/>
+    <rect x="677" y="105" width="8" height="8" rx="2"/>
+    <rect x="688" y="105" width="8" height="8" rx="2"/>
+    <rect x="699" y="105" width="8" height="8" rx="2"/>
+    <rect x="710" y="105" width="8" height="8" rx="2"/>
+  </g>
+  <g fill="rgba(38,166,65,0.4)">
+    <rect x="644" y="116" width="8" height="8" rx="2"/>
+    <rect x="666" y="116" width="8" height="8" rx="2"/>
+    <rect x="688" y="116" width="8" height="8" rx="2"/>
+  </g>
+  <g fill="rgba(38,166,65,0.7)">
+    <rect x="655" y="116" width="8" height="8" rx="2"/>
+    <rect x="699" y="116" width="8" height="8" rx="2"/>
+  </g>
+  <g fill="#39d353">
+    <rect x="677" y="116" width="8" height="8" rx="2"/>
+    <rect x="710" y="116" width="8" height="8" rx="2"/>
+  </g>
+  <g fill="rgba(255,255,255,0.08)">
+    <rect x="644" y="127" width="8" height="8" rx="2"/>
+    <rect x="677" y="127" width="8" height="8" rx="2"/>
+  </g>
+  <g fill="rgba(38,166,65,0.5)">
+    <rect x="655" y="127" width="8" height="8" rx="2"/>
+    <rect x="666" y="127" width="8" height="8" rx="2"/>
+    <rect x="688" y="127" width="8" height="8" rx="2"/>
+    <rect x="699" y="127" width="8" height="8" rx="2"/>
+    <rect x="710" y="127" width="8" height="8" rx="2"/>
+  </g>
+  <text x="644" y="165" font-family="'Inter', system-ui" font-size="13" fill="rgba(255,255,255,0.7)">12 commits this week</text>
+  <rect x="644" y="175" width="200" height="3" rx="2" fill="rgba(255,255,255,0.06)"/>
+  <rect x="644" y="175" width="140" height="3" rx="2" fill="#3b82f6"/>
+
+  <!-- Widget 2: Pomodoro -->
+  <rect x="620" y="228" width="130" height="130" rx="12" fill="url(#card1)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="685" y="254" font-family="'JetBrains Mono', monospace" font-size="9"
+        fill="rgba(255,255,255,0.35)" text-anchor="middle" letter-spacing="1">POMODORO</text>
+  <circle cx="685" cy="305" r="32" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="5"/>
+  <circle cx="685" cy="305" r="32" fill="none" stroke="#ef4444" stroke-width="5"
+          stroke-linecap="round" stroke-dasharray="201" stroke-dashoffset="55"
+          transform="rotate(-90 685 305)"/>
+  <text x="685" y="301" font-family="'JetBrains Mono', monospace" font-size="13"
+        font-weight="700" fill="white" text-anchor="middle">18:42</text>
+  <text x="685" y="314" font-family="'Inter', system-ui" font-size="8"
+        fill="rgba(255,255,255,0.35)" text-anchor="middle">FOCUS</text>
+
+  <!-- Widget 3: XP Level -->
+  <rect x="762" y="228" width="138" height="130" rx="12" fill="url(#card1)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="831" y="254" font-family="'JetBrains Mono', monospace" font-size="9"
+        fill="rgba(255,255,255,0.35)" text-anchor="middle" letter-spacing="1">XP LEVEL</text>
+  <text x="831" y="296" font-family="'Inter', system-ui" font-size="28" font-weight="700"
+        fill="white" text-anchor="middle">Lv. 8</text>
+  <text x="831" y="314" font-family="'Inter', system-ui" font-size="10"
+        fill="rgba(255,255,255,0.4)" text-anchor="middle">Junior Engineer</text>
+  <rect x="783" y="328" width="96" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+  <rect x="783" y="328" width="62" height="6" rx="3" fill="url(#bargrad)"/>
+  <text x="831" y="348" font-family="'JetBrains Mono', monospace" font-size="9"
+        fill="rgba(255,255,255,0.3)" text-anchor="middle">620 / 1000 XP</text>
+
+  <!-- Widget 4: WakaTime -->
+  <rect x="620" y="376" width="280" height="130" rx="12" fill="url(#card1)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="644" y="402" font-family="'JetBrains Mono', monospace" font-size="10"
+        fill="rgba(255,255,255,0.35)" letter-spacing="1">WAKATIME</text>
+  <text x="644" y="432" font-family="'Inter', system-ui" font-size="26" font-weight="700"
+        fill="#3b82f6">4h 12m</text>
+  <text x="644" y="458" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(255,255,255,0.3)">JavaScript</text>
+  <rect x="716" y="449" width="130" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
+  <rect x="716" y="449" width="110" height="5" rx="2" fill="#f7df1e" opacity="0.8"/>
+  <text x="644" y="474" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(255,255,255,0.3)">TypeScript</text>
+  <rect x="716" y="465" width="130" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
+  <rect x="716" y="465" width="70" height="5" rx="2" fill="#3178c6" opacity="0.85"/>
+  <text x="644" y="490" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(255,255,255,0.3)">CSS</text>
+  <rect x="716" y="481" width="130" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
+  <rect x="716" y="481" width="38" height="5" rx="2" fill="#264de4" opacity="0.85"/>
+
+  <!-- Bottom URL strip -->
+  <rect x="0" y="588" width="1200" height="42" fill="rgba(255,255,255,0.02)"/>
+  <rect x="0" y="588" width="1200" height="1" fill="rgba(255,255,255,0.06)"/>
+  <text x="600" y="614" font-family="'JetBrains Mono', monospace" font-size="13"
+        fill="rgba(255,255,255,0.25)" text-anchor="middle" letter-spacing="1">
+    devdaily-dashboard.vercel.app
+  </text>
+</svg>

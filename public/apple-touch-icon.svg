@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <defs>
+    <linearGradient id="iconBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="iconAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="180" height="180" rx="38" fill="url(#iconBg)"/>
+
+  <!-- Subtle inner border -->
+  <rect x="1" y="1" width="178" height="178" rx="37"
+        fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+  <!-- Top-left widget: GitHub bars -->
+  <rect x="28" y="28" width="54" height="54" rx="10" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.3)" stroke-width="1"/>
+  <rect x="38" y="58" width="6" height="14" rx="2" fill="rgba(59,130,246,0.4)"/>
+  <rect x="47" y="48" width="6" height="24" rx="2" fill="rgba(59,130,246,0.6)"/>
+  <rect x="56" y="53" width="6" height="19" rx="2" fill="rgba(59,130,246,0.5)"/>
+  <rect x="65" y="44" width="6" height="28" rx="2" fill="#3b82f6"/>
+
+  <!-- Top-right widget: Pomodoro ring -->
+  <rect x="98" y="28" width="54" height="54" rx="10" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.25)" stroke-width="1"/>
+  <circle cx="125" cy="55" r="17" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4"/>
+  <circle cx="125" cy="55" r="17" fill="none" stroke="#ef4444" stroke-width="4"
+          stroke-linecap="round" stroke-dasharray="107" stroke-dashoffset="30"
+          transform="rotate(-90 125 55)"/>
+  <text x="125" y="59" font-family="system-ui, sans-serif" font-size="9" font-weight="700"
+        fill="white" text-anchor="middle">25m</text>
+
+  <!-- Bottom-left widget: Tasks -->
+  <rect x="28" y="98" width="54" height="54" rx="10" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+  <rect x="38" y="112" width="24" height="3" rx="1.5" fill="rgba(245,158,11,0.5)"/>
+  <rect x="38" y="120" width="30" height="3" rx="1.5" fill="rgba(245,158,11,0.7)"/>
+  <rect x="38" y="128" width="20" height="3" rx="1.5" fill="#f59e0b"/>
+  <text x="70" y="115" font-family="system-ui, sans-serif" font-size="10" fill="#10b981">✓</text>
+  <text x="70" y="131" font-family="system-ui, sans-serif" font-size="10" fill="#10b981">✓</text>
+
+  <!-- Bottom-right widget: XP level -->
+  <rect x="98" y="98" width="54" height="54" rx="10" fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.25)" stroke-width="1"/>
+  <text x="125" y="126" font-family="system-ui, sans-serif" font-size="11" font-weight="700"
+        fill="white" text-anchor="middle">Lv.8</text>
+  <rect x="108" y="133" width="34" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="108" y="133" width="22" height="4" rx="2" fill="url(#iconAccent)"/>
+
+  <!-- Center connector dot -->
+  <circle cx="90" cy="90" r="5" fill="url(#iconAccent)"/>
+</svg>

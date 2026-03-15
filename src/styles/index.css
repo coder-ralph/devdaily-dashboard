@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  /* Light mode defaults */
+  html {
+    background-color: #f4f5f7;
+    color: #111318;
+  }
+
+  /* Dark mode overrides on <html> */
+  html.dark {
+    background-color: #0a0b0e;
+    color: #f0f2f5;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 2px; }
+  html.dark ::-webkit-scrollbar-thumb { background: #262d3d; }
+  ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+  html.dark ::-webkit-scrollbar-thumb:hover { background: #3b4260; }
+}
+
+@layer components {
+  /* Widget card */
+  .widget-card {
+    @apply rounded-xl overflow-hidden transition-colors duration-200;
+    @apply bg-white border border-gray-200;
+  }
+  .dark .widget-card {
+    @apply bg-surface-1 border-white/[0.07];
+  }
+
+  /* Widget header */
+  .widget-header {
+    @apply flex items-center justify-between px-4 py-3 border-b transition-colors duration-200;
+    @apply border-gray-200;
+  }
+  .dark .widget-header {
+    @apply border-white/[0.07];
+  }
+
+  .widget-title {
+    @apply flex items-center gap-2 text-xs font-semibold uppercase tracking-wider transition-colors;
+    @apply text-gray-500;
+  }
+  .dark .widget-title { @apply text-gray-400; }
+
+  .widget-badge {
+    @apply text-xs font-mono px-2 py-0.5 rounded transition-colors;
+    @apply bg-gray-100 text-gray-500;
+  }
+  .dark .widget-badge { @apply bg-surface-3 text-gray-500; }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-accent-blue hover:bg-blue-500 text-white text-xs font-semibold px-3 py-1.5 rounded-md transition-colors;
+  }
+
+  .btn-ghost {
+    @apply text-xs font-medium px-3 py-1.5 rounded-md transition-colors;
+    @apply bg-gray-100 hover:bg-gray-200 border border-gray-300 text-gray-700;
+  }
+  .dark .btn-ghost {
+    @apply bg-surface-2 hover:bg-surface-3 border-white/[0.08] text-gray-300;
+  }
+
+  /* Inputs */
+  .input-base {
+    @apply rounded-md text-sm px-3 py-2 outline-none focus:ring-1 focus:ring-accent-blue/50 transition-colors;
+    @apply bg-gray-100 border border-gray-300 text-gray-900 placeholder-gray-400;
+  }
+  .dark .input-base {
+    @apply bg-surface-2 border-white/[0.1] text-white placeholder-gray-600;
+  }
+
+  /* Stat cards */
+  .stat-card {
+    @apply rounded-lg p-3 flex flex-col gap-1 transition-colors;
+    @apply bg-gray-100;
+  }
+  .dark .stat-card { @apply bg-surface-2; }
+
+  .stat-label {
+    @apply text-[10px] font-mono uppercase tracking-wider transition-colors;
+    @apply text-gray-400;
+  }
+  .dark .stat-label { @apply text-gray-500; }
+
+  .stat-value { @apply text-xl font-bold leading-none; }
+
+  /* Item rows */
+  .item-row {
+    @apply flex items-start gap-2 p-2.5 rounded-lg border transition-colors;
+    @apply bg-gray-50 border-gray-200;
+  }
+  .dark .item-row { @apply bg-surface-2 border-white/[0.05]; }
+
+  /* Tab bars */
+  .tab-bar {
+    @apply flex rounded-md p-0.5 gap-0.5 transition-colors;
+    @apply bg-gray-100;
+  }
+  .dark .tab-bar { @apply bg-surface-2; }
+
+  .tab-btn {
+    @apply text-[10px] font-medium px-2.5 py-1 rounded transition-colors cursor-pointer;
+    @apply text-gray-400 hover:text-gray-700;
+  }
+  .dark .tab-btn { @apply text-gray-500 hover:text-gray-300; }
+
+  .tab-btn.active { @apply bg-white text-gray-900; }
+  .dark .tab-btn.active { @apply bg-surface-4 text-white; }
+}
