@@ -1,19 +1,22 @@
+import { getWakatimeKey } from '../utils/credentialStorage'
+
 /**
  * WakaTime API Service
  *
- * All requests go through the Vercel proxy endpoint:
- *    GET /api/wakatime
+ * All requests go through the Vercel serverless proxy at /api/wakatime.
+ * Direct browser requests to wakatime.com are blocked by CORS — the proxy
+ * is the only viable path for browser-originated WakaTime requests.
  *
- * This keeps the WakaTime API key server-side and avoids CORS issues.
+ * Key resolution (handled by the proxy, not the browser):
+ *  1. If a user key exists in localStorage, it is forwarded to the proxy
+ *     as the x-wakatime-key request header. The proxy uses it first.
+ *  2. If no user key is present, the request is sent with no header and
+ *     the proxy falls back to its WAKATIME_API_KEY environment variable.
  *
- * Flow:
- * Widget → fetchTodaySummary() → /api/wakatime → WakaTime API
- *
- * Required server variable:
- * WAKATIME_API_KEY (configured in Vercel Environment Variables)
+ * The key is never used directly in the browser for API calls.
+ * It travels over HTTPS to our own proxy endpoint only.
  */
 
-// Mock fallback used if the proxy fails
 const MOCK_DATA = {
   isMock: true,
   totalSeconds: 12600,
@@ -31,12 +34,6 @@ const MOCK_DATA = {
   ],
 }
 
-// Helpers
-/**
- * Convert a raw seconds value to a compact human-readable string.
- * formatDuration(3660) → "1h 1m"
- * formatDuration(45)   → "0m"
- */
 export function formatDuration(seconds) {
   const h = Math.floor(seconds / 3600)
   const m = Math.floor((seconds % 3600) / 60)
@@ -45,10 +42,6 @@ export function formatDuration(seconds) {
   return `${h}h ${m}m`
 }
 
-/**
- * Normalise a raw WakaTime summary object into the shape the widget expects.
- * Returns a consistent structure regardless of how the upstream API responds.
- */
 function normaliseSummary(summary) {
   const totalSeconds = summary.grand_total?.total_seconds || 0
 
@@ -76,23 +69,35 @@ function normaliseSummary(summary) {
   }
 }
 
-// Main API call
 /**
- * Fetch today's coding summary via the /api/wakatime proxy.
- * Returns live data on success, or MOCK_DATA on failure.
+ * Fetch today's WakaTime coding summary via the server-side proxy.
+ *
+ * If a user key exists in localStorage, it is forwarded to the proxy
+ * as x-wakatime-key so the proxy can use it instead of its env var.
+ *
+ * Always resolves — never rejects.
+ * Returns live data on success, MOCK_DATA on any failure.
  */
 export async function fetchTodaySummary() {
   try {
-    const res = await fetch('/api/wakatime')
+    // Read user-saved key from localStorage at call time.
+    // getWakatimeKey() returns a string or null.
+    const userKey = getWakatimeKey()
 
-    // Non-2xx responses (proxy error, missing key, WakaTime down)
+    // Build request headers.
+    // Only add x-wakatime-key when a non-empty user key is present.
+    const headers = {}
+    if (userKey) {
+      headers['x-wakatime-key'] = userKey
+    }
+
+    const res = await fetch('/api/wakatime', { headers })
+
     if (!res.ok) {
       console.warn('[WakaTime] Proxy responded with', res.status)
       return MOCK_DATA
     }
 
-    // Guard against the proxy returning HTML instead of JSON
-    // (e.g., a Vercel 404 page if the function is not deployed)
     const contentType = res.headers.get('content-type') || ''
     if (!contentType.includes('application/json')) {
       console.warn('[WakaTime] Proxy returned non-JSON response')
@@ -101,17 +106,15 @@ export async function fetchTodaySummary() {
 
     const json = await res.json()
 
-    // The proxy may itself return an error object
     if (json.error) {
       console.warn('[WakaTime] Proxy error:', json.error)
       return MOCK_DATA
     }
 
-    // WakaTime returns summaries as an array; today is always index 0
     const summary = json.data?.[0]
 
     if (!summary) {
-      // Proxy is working but no data for today (e.g., no coding yet)
+      // Proxy is working but no coding activity recorded yet today
       return {
         isMock: false,
         totalSeconds: 0,
@@ -124,7 +127,6 @@ export async function fetchTodaySummary() {
     return normaliseSummary(summary)
 
   } catch {
-    // Network failure, parse error, or AbortError
     console.warn('[WakaTime] Failed to reach proxy — showing fallback data')
     return MOCK_DATA
   }
