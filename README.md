@@ -103,11 +103,17 @@ REST endpoints are still used for profile data, repos, and recent commit message
 ---
 
 ## WakaTime Architecture
-```
-Widget → wakatimeApi.js → GET /api/wakatime → WakaTime API
-```
 
-The WakaTime API key stays server-side in the Vercel serverless function (`api/wakatime.js`). The browser never receives the key. If the proxy fails, the widget falls back to mock data automatically.
+WakaTime data is fetched through the serverless proxy:
+
+`Widget → wakatimeApi.js → GET /api/wakatime → WakaTime API`
+
+Supported key sources:
+
+- `WAKATIME_API_KEY` from Vercel Environment Variables
+- user-saved WakaTime key from the dashboard UI, forwarded to the proxy via `x-wakatime-key`
+
+If the proxy fails or no valid key is available, the widget falls back to mock data automatically.
 
 ---
 
