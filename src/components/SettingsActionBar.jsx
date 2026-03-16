@@ -18,8 +18,8 @@ import {
  * Uses a local `tick` counter to force a re-render after save/clear so
  * the ✓ badge reflects the new localStorage state immediately.
  */
-export default function SettingsActionBar() {
-  const [wakaOpen,   setWakaOpen]   = useState(false)
+export default function SettingsActionBar({ onWakatimeCredentialChange }) {
+  const [wakaOpen, setWakaOpen] = useState(false)
   const [githubOpen, setGithubOpen] = useState(false)
 
   // Increment to trigger re-read from localStorage after mutations
@@ -27,20 +27,22 @@ export default function SettingsActionBar() {
   const refresh = useCallback(() => setTick(t => t + 1), [])
 
   // Read current saved state — refreshed whenever tick changes
-  const wakaKey   = getWakatimeKey()
+  const wakaKey = getWakatimeKey()
   const githubTok = getGithubToken()
-  const wakaSaved   = !!wakaKey
+  const wakaSaved = !!wakaKey
   const githubSaved = !!githubTok
 
   const handleSaveWaka = useCallback((key) => {
     setWakatimeKey(key)
     refresh()
-  }, [refresh])
+    onWakatimeCredentialChange?.()
+  }, [refresh, onWakatimeCredentialChange])
 
   const handleClearWaka = useCallback(() => {
     clearWakatimeKey()
     refresh()
-  }, [refresh])
+    onWakatimeCredentialChange?.()
+  }, [refresh, onWakatimeCredentialChange])
 
   const handleSaveGH = useCallback((token) => {
     setGithubToken(token)
