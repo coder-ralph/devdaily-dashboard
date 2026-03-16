@@ -21,6 +21,9 @@ export default function Dashboard({ searchUsername }) {
   const [pomosCompleted, setPomos] = useState(0)
   const [tasksDoneToday, setTasksDone] = useState(0)
 
+  const [wakaRefreshKey, setWakaRefreshKey] = useState(0)
+  const handleWakatimeCredentialChange = useCallback(() => setWakaRefreshKey(k => k + 1), [])
+
   useEffect(() => {
     if (searchUsername) github.load(searchUsername)
   }, [searchUsername]) // eslint-disable-line
@@ -103,7 +106,7 @@ export default function Dashboard({ searchUsername }) {
         <NotesWidget />
 
         {/* Row 4: WakaTime + XP + Goal */}
-        <WakaTimeWidget />
+        <WakaTimeWidget refreshKey={wakaRefreshKey} />
         <XPLevelWidget
           totalXP={xp.totalXP}
           level={xp.level}
@@ -120,7 +123,7 @@ export default function Dashboard({ searchUsername }) {
       </div>
 
       {/* ── Bottom: credentials + footer ── */}
-      <SettingsActionBar />
+      <SettingsActionBar onWakatimeCredentialChange={handleWakatimeCredentialChange} />
       <DashboardFooter />
 
     </main>
