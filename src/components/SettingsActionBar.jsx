@@ -59,12 +59,11 @@ export default function SettingsActionBar() {
         aria-label="API credentials"
         className="mt-6 pt-5 border-t border-gray-200 dark:border-white/[0.07]"
       >
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
 
           {/* Left — label */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider
-              text-gray-500 dark:text-gray-400">
+            <p className="text-xs font-semibold tracking-wider text-gray-500 uppercase dark:text-gray-400">
               Credentials
             </p>
             <p className="text-[11px] mt-0.5 text-gray-400 dark:text-gray-600">
@@ -73,7 +72,7 @@ export default function SettingsActionBar() {
           </div>
 
           {/* Right — action buttons */}
-          <div className="flex flex-col sm:flex-row gap-2">
+          <div className="flex flex-col gap-2 sm:flex-row">
 
             {/* WakaTime key */}
             <button
@@ -83,10 +82,10 @@ export default function SettingsActionBar() {
                 bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700
                 dark:bg-surface-2 dark:hover:bg-surface-3 dark:border-white/[0.08] dark:text-gray-300"
             >
-              <Clock size={13} className="text-accent-blue flex-shrink-0" />
+              <Clock size={13} className="flex-shrink-0 text-accent-blue" />
               WakaTime API Key
               {wakaSaved && (
-                <CheckCircle2 size={12} className="text-emerald-400 flex-shrink-0" />
+                <CheckCircle2 size={12} className="flex-shrink-0 text-emerald-400" />
               )}
             </button>
 
@@ -98,10 +97,10 @@ export default function SettingsActionBar() {
                 bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700
                 dark:bg-surface-2 dark:hover:bg-surface-3 dark:border-white/[0.08] dark:text-gray-300"
             >
-              <KeyRound size={13} className="text-purple-400 flex-shrink-0" />
+              <KeyRound size={13} className="flex-shrink-0 text-purple-400" />
               GitHub Token
               {githubSaved && (
-                <CheckCircle2 size={12} className="text-emerald-400 flex-shrink-0" />
+                <CheckCircle2 size={12} className="flex-shrink-0 text-emerald-400" />
               )}
             </button>
 
