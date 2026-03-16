@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Clock } from 'lucide-react'
 import WidgetCard from '../components/WidgetCard'
 import LoadingSpinner from '../components/LoadingSpinner'
@@ -65,28 +65,33 @@ function LangBar({ name, totalSeconds, percent, maxSeconds }) {
 // ---------------------------------------------------------------------------
 // Main widget
 // ---------------------------------------------------------------------------
-export default function WakaTimeWidget() {
-  const [data, setData]       = useState(null)
+export default function WakaTimeWidget({ refreshKey = 0 }) {
+  const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
-  // hasFetched prevents a second fetch on re-renders while mounted.
-  // Since data comes from the server-side proxy (not a client key),
-  // we intentionally do not re-fetch when credentials change.
-  const hasFetched = useRef(false)
 
   useEffect(() => {
-    if (hasFetched.current) return
-    hasFetched.current = true
+    let isActive = true
+
+    setLoading(true)
 
     fetchTodaySummary()
-      .then(setData)
-      .finally(() => setLoading(false))
-  }, [])
+      .then((result) => {
+        if (isActive) setData(result)
+      })
+      .finally(() => {
+        if (isActive) setLoading(false)
+      })
+
+    return () => {
+      isActive = false
+    }
+  }, [refreshKey])
 
   // The top language drives the proportional bar widths
   const maxSeconds = data?.languages?.[0]?.totalSeconds || 1
 
   // Badge: "live" when proxy returned real data, "mock data" as fallback
-  const badge = data?.isMock ? 'mock data' : 'live'
+  const badge = !data ? 'loading' : data.isMock ? 'mock data' : 'live'
 
   return (
     <WidgetCard
