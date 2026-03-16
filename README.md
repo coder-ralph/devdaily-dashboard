@@ -77,10 +77,15 @@ VITE_GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
 # Pre-fill the GitHub username field on load (optional)
 VITE_DEFAULT_GITHUB_USERNAME=
 
-# WakaTime API Key — only needed for local development without the proxy
-# On Vercel, use WAKATIME_API_KEY (server-side, no VITE_ prefix) instead
-# Find at: https://wakatime.com/settings/api-key
-VITE_WAKATIME_API_KEY=
+# WakaTime API Key (optional — server-side proxy)
+# Set this in Vercel Environment Variables for production.
+# The dashboard can also use a user-saved key stored in localStorage.
+# Proxy priority:
+#   1. x-wakatime-key (user key)
+#   2. WAKATIME_API_KEY (server env)
+# If unavailable, the widget falls back to mock data.
+# https://wakatime.com/settings/api-key
+WAKATIME_API_KEY=
 ```
 
 ### In-app credential entry
@@ -103,11 +108,17 @@ REST endpoints are still used for profile data, repos, and recent commit message
 ---
 
 ## WakaTime Architecture
-```
-Widget → wakatimeApi.js → GET /api/wakatime → WakaTime API
-```
 
-The WakaTime API key stays server-side in the Vercel serverless function (`api/wakatime.js`). The browser never receives the key. If the proxy fails, the widget falls back to mock data automatically.
+WakaTime data is fetched through the serverless proxy:
+
+`Widget → wakatimeApi.js → GET /api/wakatime → WakaTime API`
+
+Supported key sources:
+
+- `WAKATIME_API_KEY` from Vercel Environment Variables
+- user-saved WakaTime key from the dashboard UI, forwarded to the proxy via `x-wakatime-key`
+
+If the proxy fails or no valid key is available, the widget falls back to mock data automatically.
 
 ---
 
