@@ -43,7 +43,7 @@ function LangBar({ name, totalSeconds, percent, maxSeconds }) {
           className="flex-shrink-0 w-2 h-2 rounded-full"
           style={{ backgroundColor: color }}
         />
-        <span className="text-xs truncate">{name}</span>
+        <span className="text-xs text-gray-900 truncate dark:text-white">{name}</span>
       </div>
 
       {/* Fill bar */}

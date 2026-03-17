@@ -113,7 +113,7 @@ export default function GithubGoalTracker({ events = [], username }) {
         <>
           {/* Score */}
           <div className="flex items-baseline gap-2 mb-1">
-            <span className={`text-3xl font-bold leading-none ${done ? 'text-emerald-400' : ''}`}>
+            <span className={`text-3xl font-bold leading-none ${done ? 'text-emerald-400' : 'text-gray-900 dark:text-white'}`}>
               {monthCommits}
             </span>
             <span className="text-sm text-gray-500">/ {goal} commits</span>
@@ -142,11 +142,11 @@ export default function GithubGoalTracker({ events = [], username }) {
           {/* Stats row */}
           <div className="grid grid-cols-3 gap-2 mb-4">
             <div className="text-center stat-card">
-              <span className="text-base stat-value">{monthCommits}</span>
+              <span className="text-base text-gray-900 stat-value dark:text-white">{monthCommits}</span>
               <span className="stat-label">this month</span>
             </div>
             <div className="text-center stat-card">
-              <span className="text-base stat-value">{remaining}</span>
+              <span className="text-base text-gray-900 stat-value dark:text-white">{remaining}</span>
               <span className="stat-label">remaining</span>
             </div>
             <div className="text-center stat-card">

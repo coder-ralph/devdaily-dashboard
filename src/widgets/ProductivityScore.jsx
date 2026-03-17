@@ -49,7 +49,7 @@ export default function ProductivityScore({ githubCommits, streak, tasksComplete
         <div className="flex-1">
           <div className={`text-sm font-semibold mb-2 ${SCORE_COLOR(score)}`}>{label}</div>
           {/* Master bar */}
-          <div className="h-2 bg-surface-3 rounded-full overflow-hidden">
+          <div className="h-2 overflow-hidden rounded-full bg-surface-3">
             <div
               className={`h-full rounded-full transition-all duration-1000 ${SCORE_BG(score)}`}
               style={{ width: `${score}%` }}
@@ -86,8 +86,8 @@ export default function ProductivityScore({ githubCommits, streak, tasksComplete
           { label: 'tasks',   value: tasksCompleted },
           { label: 'pomos',   value: pomosCompleted },
         ].map(s => (
-          <div key={s.label} className="stat-card text-center">
-            <span className="stat-value text-sm">{s.value}</span>
+          <div key={s.label} className="text-center stat-card">
+            <span className="text-sm text-gray-900 stat-value dark:text-white">{s.value}</span>
             <span className="stat-label">{s.label}</span>
           </div>
         ))}

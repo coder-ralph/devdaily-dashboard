@@ -56,7 +56,7 @@ export default function XPLevelWidget({
       headerRight={
         <button
           onClick={() => setShowReset(s => !s)}
-          className="text-gray-600 hover:text-gray-400 transition-colors p-1"
+          className="p-1 text-gray-600 transition-colors hover:text-gray-400"
           title="Reset options"
         >
           <RotateCcw size={11} />
@@ -88,11 +88,11 @@ export default function XPLevelWidget({
       {/* Level display */}
       <div className="flex items-start justify-between mb-3">
         <div>
-          <div className="text-2xl font-bold leading-none">Level {level}</div>
-          <div className="text-xs text-gray-400 mt-1">{title}</div>
+          <div className="text-2xl font-bold leading-none text-gray-900 dark:text-white">Level {level}</div>
+          <div className="mt-1 text-xs text-gray-400">{title}</div>
         </div>
         <div className="text-right">
-          <div className="text-sm font-mono font-semibold">
+          <div className="font-mono text-sm font-semibold">
             <span className="text-amber-400">{progress}</span>
             <span className="text-gray-500"> / {XP_PER_LEVEL} XP</span>
           </div>
@@ -104,7 +104,7 @@ export default function XPLevelWidget({
 
       {/* XP progress bar */}
       <div className="mb-4">
-        <div className="h-3 bg-gray-200 dark:bg-surface-3 rounded-full overflow-hidden">
+        <div className="h-3 overflow-hidden bg-gray-200 rounded-full dark:bg-surface-3">
           <div
             className={`h-full rounded-full bg-gradient-to-r ${gradient} transition-all duration-1000`}
             style={{ width: `${pct}%` }}
@@ -118,9 +118,9 @@ export default function XPLevelWidget({
 
       {/* Today's XP summary */}
       <div className="mb-3">
-        <div className="stat-label mb-2">earned today</div>
+        <div className="mb-2 stat-label">earned today</div>
         {todayTotal === 0 ? (
-          <p className="text-xs text-gray-500 font-mono">
+          <p className="font-mono text-xs text-gray-500">
             No XP yet today — commit code, complete tasks, or finish a Pomodoro.
           </p>
         ) : (
